@@ -1,0 +1,78 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "paths": {
+      "crb-lib-clipboard": [
+        "./dist/crb-lib-clipboard"
+      ],
+      "crb-lib-icons": [
+        "./dist/crb-lib-icons"
+      ],
+      "crb-lib-nav": [
+        "./dist/crb-lib-nav"
+      ],
+      "crb-lib-local-storage": [
+        "./dist/crb-lib-local-storage"
+      ],
+    },
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve"
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/dev.corbie.www/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/dev.corbie.www/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/cb-lib-navigation/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/cb-lib-navigation/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/dev.corbie.www/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/dev.corbie.www/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/cb-lib-icons/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/cb-lib-icons/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/crb-lib-local-storage/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/crb-lib-local-storage/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/crb-lib-clipboard/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/crb-lib-clipboard/tsconfig.spec.json"
+    }
+  ]
+}

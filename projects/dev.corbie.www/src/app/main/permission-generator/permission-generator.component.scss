@@ -1,0 +1,32 @@
+@use '../../../scss/input';
+
+@include input.crbInput;
+@include input.checkbox;
+
+.table {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: normal;
+  max-width: 25dvw;
+  margin-top: 0;
+  .item {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    &:not(:nth-child(5n + 1)) {
+      justify-content: space-around;
+    }
+    &:not(:nth-child(5n-1)) {
+      border-right: 1px solid var(--main-fg-color);
+    }
+    &:not(:nth-child(n + 15)) {
+      border-bottom: 1px solid var(--main-fg-color);
+    }
+  }
+  .break {
+    flex-basis: 100%;
+  }
+}

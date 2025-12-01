@@ -1,0 +1,478 @@
+<div class="row">
+  <div class="column">
+    <form class="crbInput">
+      <label for="masterR">Red</label>
+      <input
+        #inputMasterR
+        type="number"
+        id="masterR"
+        name="masterR"
+        maxlength="3"
+        size="3"
+        placeholder="0"
+        min="5"
+        max="256"
+        maxlength="3"
+        size="3"
+        placeholder="0"
+        [(ngModel)]="masterR"
+        (ngModelChange)="changeColorHandler(inputMasterR.value, 'master')"
+      />
+      <input
+        #inputSliderR
+        type="range"
+        id="rangeR"
+        name="rangeR"
+        min="0"
+        max="255"
+        class="slider"
+        [(ngModel)]="masterR"
+        (ngModelChange)="changeColorHandler(inputMasterR.value, 'master')"
+      />
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label for="masterG">Green</label>
+      <input
+        #inputMasterG
+        type="number"
+        id="masterG"
+        name="masterG"
+        maxlength="3"
+        size="3"
+        placeholder="0"
+        min="5"
+        max="256"
+        maxlength="3"
+        size="3"
+        placeholder="0"
+        [(ngModel)]="masterG"
+        (ngModelChange)="changeColorHandler(inputMasterG.value, 'master')"
+      />
+      <input
+        #inputSliderG
+        type="range"
+        id="rangeG"
+        name="rangeG"
+        min="0"
+        max="255"
+        class="slider"
+        [(ngModel)]="masterG"
+        (ngModelChange)="changeColorHandler(inputMasterG.value, 'master')"
+      />
+    </form>
+  </div>
+
+  <div class="column">
+    <form class="crbInput">
+      <label for="masterB">Blue</label>
+      <input
+        #inputMasterB
+        type="number"
+        id="masterB"
+        name="masterB"
+        maxlength="3"
+        size="3"
+        placeholder="0"
+        min="5"
+        max="256"
+        maxlength="3"
+        size="3"
+        placeholder="0"
+        [(ngModel)]="masterB"
+        (ngModelChange)="changeColorHandler(inputMasterB.value, 'master')"
+      />
+      <input
+        #inputSliderB
+        type="range"
+        id="rangeB"
+        name="rangeB"
+        min="0"
+        max="255"
+        class="slider"
+        [(ngModel)]="masterB"
+        (ngModelChange)="changeColorHandler(inputMasterB.value, 'master')"
+      />
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label>Colorpicker</label>
+      <app-color-picker
+        [(color)]="colorPicker"
+        (changeColor)="changeColorHandler($event)"
+        disabled="false"
+      />
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label for="hex">HEX</label>
+      <div class="flex">
+        <input
+          #inputHEX
+          id="hex"
+          type="text"
+          maxlength="7"
+          placeholder="000000"
+          [value]="colorHEX()"
+          (input)="changeColorHandler(inputHEX.value, 'HEX')"
+        />
+        <crb-clipboard class="ml5" title="Color as HEX" [value]="'#' + colorHEX()" />
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label for="rgb">RGB</label>
+      <div class="flex">
+        <input
+          #inputRGB
+          id="rgb"
+          type="text"
+          maxlength="100"
+          placeholder="0,0,0"
+          [value]="colorRGB()"
+          (input)="changeColorHandler(inputRGB.value, 'RGB')"
+        />
+        <crb-clipboard class="ml5" title="Color as RGB" [value]="'rgba(' + colorRGB() + ',1)'" />
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label for="hexWeb">closest HEX websafe</label>
+      <div class="flex">
+        <input
+          #inputHEXWeb
+          id="hexWeb"
+          type="text"
+          maxlength="6"
+          placeholder="000000"
+          [value]="colorHEXWeb()"
+          disabled
+        />
+        <crb-clipboard class="ml5" title="Websafe as HEX" [value]="'#' + colorHEXWeb()" />
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label for="rgbWeb">closest RGB websafe</label>
+      <div class="flex">
+        <input
+          #inputRGBWeb
+          id="rgbWeb"
+          type="text"
+          maxlength="100"
+          placeholder="0,0,0"
+          [value]="colorRGBWeb()"
+          disabled
+        />
+        <crb-clipboard class="ml5" title="Websafe as RGB" [value]="'rgba(' + colorRGBWeb() + ',1)'" />
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label>Preview websafe</label>
+      <app-color-picker
+        [(color)]="colorPickerWeb"
+        (changeColor)="changeColorHandler($event)"
+        disabled="true"
+      />
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label for="inputName">Color name</label>
+      <div class="flex">
+        <select
+          id="inputName"
+          name="inputName"
+          #inputName
+          [(ngModel)]="colorName"
+          (ngModelChange)="changeColorHandler($event)"
+        >
+          <option [value]="'default'" disabled>no name</option>
+          @for (name of names; track $index) {
+          <option [value]="codes[$index]">
+            <span>{{ name }}</span>
+          </option>
+          }
+        </select>
+        <crb-clipboard *ngIf="names[codes.indexOf(inputName.value)]" class="ml5" title="Color name" [value]="names[codes.indexOf(inputName.value)]" />
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label for="hwb">HWB</label>
+      <div class="flex">
+        <input
+          #inputHWB
+          id="hwb"
+          type="text"
+          maxlength="100"
+          placeholder="0,0,0"
+          [value]="colorHWB()"
+          (input)="changeColorHandler(inputHWB.value, 'HWB')"
+        />
+        <crb-clipboard class="ml5" title="Color as HWB" [value]="'hwb(' + colorHWB() + ')'" />
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <span class="pseudoLabel">HSV (HSB)</span>
+      <div class="group">
+        <div class="group__item">
+          <label for="hsv-h">H:</label>
+          <input
+            #inputHSVh
+            id="hsv-h"
+            type="number"
+            min="0"
+            max="360"
+            size="4"
+            placeholder="0"
+            [value]="colorHSV()[0]"
+            (input)="
+              changeColorHandler(
+                inputHSVh.value + ',' + inputHSVs.value + ',' + inputHSVv.value,
+                'HSV'
+              )
+            "
+          />
+          <span>°</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="group__item">
+          <label for="hsv-s">S:</label>
+          <input
+            #inputHSVs
+            id="hsv-s"
+            type="number"
+            min="0"
+            max="100"
+            size="4"
+            placeholder="0"
+            [value]="colorHSV()[1]"
+            (input)="
+              changeColorHandler(
+                inputHSVh.value + ',' + inputHSVs.value + ',' + inputHSVv.value,
+                'HSV'
+              )
+            "
+          />
+          <span>%</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="group__item">
+          <label for="hsv-v">V:</label>
+          <input
+            #inputHSVv
+            id="hsv-v"
+            type="number"
+            min="0"
+            max="100"
+            size="4"
+            placeholder="0"
+            [value]="colorHSV()[2]"
+            (input)="
+              changeColorHandler(
+                inputHSVh.value + ',' + inputHSVs.value + ',' + inputHSVv.value,
+                'HSV'
+              )
+            "
+          />
+          <span>%</span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <span class="pseudoLabel">HSL</span>
+      <div class="group">
+        <div class="group__item">
+          <label for="hsl-h">H:</label>
+          <input
+            #inputHSLh
+            id="hsl-h"
+            type="number"
+            min="0"
+            max="360"
+            size="4"
+            placeholder="0"
+            [value]="colorHSL()[0]"
+            (input)="
+              changeColorHandler(
+                inputHSLh.value + ',' + inputHSLs.value + ',' + inputHSLl.value,
+                'HSL'
+              )
+            "
+          />
+          <span>°</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="group__item">
+          <label for="hsl-s">S:</label>
+          <input
+            #inputHSLs
+            id="hsl-s"
+            type="number"
+            min="0"
+            max="100"
+            size="4"
+            placeholder="0"
+            [value]="colorHSL()[1]"
+            (input)="
+              changeColorHandler(
+                inputHSLh.value + ',' + inputHSLs.value + ',' + inputHSLl.value,
+                'HSL'
+              )
+            "
+          />
+          <span>%</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="group__item">
+          <label for="hsl-l">L:</label>
+          <input
+            #inputHSLl
+            id="hsl-l"
+            type="number"
+            min="0"
+            max="100"
+            size="10"
+            placeholder="0"
+            [value]="colorHSL()[2]"
+            (input)="
+              changeColorHandler(
+                inputHSLh.value + ',' + inputHSLs.value + ',' + inputHSLl.value,
+                'HSL'
+              )
+            "
+          />
+          <span>%</span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <span class="pseudoLabel">CMYK</span>
+      <div class="group">
+        <div class="group__item">
+          <label for="cmyk-c">C: </label>
+          <input
+            #inputCMYKc
+            id="cmyk-c"
+            type="number"
+            min="0"
+            max="100"
+            size="3"
+            placeholder="0"
+            [value]="colorCMYK()[0]"
+            (input)="
+              changeColorHandler(
+                inputCMYKc.value +
+                  ',' +
+                  inputCMYKm.value +
+                  ',' +
+                  inputCMYKy.value +
+                  ',' +
+                  inputCMYKk.value,
+                'CMYK'
+              )
+            "
+          />
+          <span> %</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="group__item">
+          <label for="cmyk-m">M: </label>
+          <input
+            #inputCMYKm
+            id="cmyk-m"
+            type="number"
+            min="0"
+            max="100"
+            size="3"
+            placeholder="0"
+            [value]="colorCMYK()[1]"
+            (input)="
+              changeColorHandler(
+                inputCMYKc.value +
+                  ',' +
+                  inputCMYKm.value +
+                  ',' +
+                  inputCMYKy.value +
+                  ',' +
+                  inputCMYKk.value,
+                'CMYK'
+              )
+            "
+          />
+          <span> %</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="group__item">
+          <label for="cmyk-y">Y: </label>
+          <input
+            #inputCMYKy
+            id="cmyk-y"
+            type="number"
+            min="0"
+            max="100"
+            size="3"
+            placeholder="0"
+            [value]="colorCMYK()[2]"
+            (input)="
+              changeColorHandler(
+                inputCMYKc.value +
+                  ',' +
+                  inputCMYKm.value +
+                  ',' +
+                  inputCMYKy.value +
+                  ',' +
+                  inputCMYKk.value,
+                'CMYK'
+              )
+            "
+          />
+          <span> %</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="group__item">
+          <label for="cmyk-k">K: </label>
+          <input
+            #inputCMYKk
+            id="cmyk-k"
+            type="number"
+            min="0"
+            max="100"
+            size="3"
+            placeholder="0"
+            [value]="colorCMYK()[3]"
+            (input)="
+              changeColorHandler(
+                inputCMYKc.value +
+                  ',' +
+                  inputCMYKm.value +
+                  ',' +
+                  inputCMYKy.value +
+                  ',' +
+                  inputCMYKk.value,
+                'CMYK'
+              )
+            "
+          />
+          <span> %</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

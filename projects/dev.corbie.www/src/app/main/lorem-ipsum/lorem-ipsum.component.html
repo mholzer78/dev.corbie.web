@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="column">
+    <form class="crbInput">
+      <label for="masterR">Text</label>
+      <textarea
+        id="text"
+        name="text"
+        placeholder="Please enter the text you wanna transform!"
+        rows="15"
+        cols="75"
+        [value]="text()"
+        disabled
+      ></textarea>
+    </form>
+  </div>
+  <div class="column">
+    <form class="crbInput">
+      <label for="options">Options</label>
+      <div class="flex">
+        <input
+          id="length"
+          type="number"
+          name="length"
+          maxlength="2"
+          size="2"
+          placeholder="0"
+          min="1"
+          max="99"
+          [(ngModel)]="length"
+        />
+        <select
+          id="options"
+          class="ml5"
+          name="options"
+          #options
+          [(ngModel)]="option"
+          (ngModelChange)="onChangeOption($event)"
+        >
+          <option value="letters" [attr.selected]="option() === 'letters'">Letters</option>
+          <option value="words" [attr.selected]="option() === 'words'">Words</option>
+          <option value="paragraphs" [attr.selected]="option() === 'paragraphs'">Paragraphs</option>
+        </select>
+        <crb-clipboard class="ml5" title="Text" [value]="text()" />
+      </div>
+    </form>
+  </div>
+</div>

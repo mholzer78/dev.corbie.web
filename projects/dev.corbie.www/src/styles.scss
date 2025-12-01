@@ -1,0 +1,14 @@
+@use 'scss/fonts';
+@use 'scss/page';
+
+@include fonts.faces;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: SourceSans, sans-serif;
+}
+
+@include page.spacer;
+@include page.layout;

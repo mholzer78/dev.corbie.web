@@ -1,0 +1,39 @@
+:host {
+  position: fixed;
+  z-index: 1;
+  height: 100dvh;
+  background: var(--sec-bg-color);
+}
+ul {
+  margin: 0 1rem;
+  padding: 0;
+  list-style-type: none;
+  li {
+    margin: 1rem 0;
+  }
+}
+
+#navToggle {
+  position: absolute;
+  display: flex;
+  right: -1.5em;
+  top: 50%;
+  width: 3em;
+  height: 3em;
+  justify-content: center;
+  align-items: center;
+  background: var(--sec-bg-color);
+  border-radius: 50%;
+  &.collapsed {
+    transform: rotate(180deg);
+  }
+  crb-icon {
+    margin-top: 3px
+  }
+}
+
+#colorToggle {
+  position: absolute;
+  left: 1.75em;
+  bottom: 1.5em;
+}

@@ -1,0 +1,16 @@
+<ul>
+  @for (page of pages; track page.title) {
+  <li
+    navItem
+    [page]="page"
+    [showText]="showText"
+  ></li>
+  }
+</ul>
+<div id="navToggle" [class.collapsed]="showText" (keypress)="toggleNav()" (click)="toggleNav()">
+  <crb-icon image="toggle" width="30" height="30" />
+</div>
+
+<div id="colorToggle" (keypress)="toggleColor()" (click)="toggleColor()">
+  <crb-icon image="dayNight" width="40" height="40" />
+</div>

@@ -1,0 +1,43 @@
+$fgOK: rgba(51, 204, 51, 1);
+$bgOK: rgba(51, 204, 51, 0.2);
+$fgNOK: rgba(204, 51, 51, 1);
+$bgNOK: rgba(204, 51, 51, 0.2);
+
+:host {
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+}
+
+#clipboardInput {
+  display: none;
+}
+.message {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  font-size: 1.5rem;
+  background: white;
+  .ok,
+  .nok {
+    padding: 0.5rem 1rem;
+    &.icon {
+      color: white;
+    }
+  }
+  .ok {
+    background: $bgOK;
+    color: $fgOK;
+    &.icon {
+      background: $fgOK;
+    }
+  }
+  .nok {
+    background: $bgNOK;
+    color: $fgNOK;
+    &.icon {
+      background: $fgNOK;
+    }
+  }
+}

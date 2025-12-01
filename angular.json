@@ -1,0 +1,195 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "crb-lib-nav": {
+      "projectType": "library",
+      "root": "projects/crb-lib-nav",
+      "sourceRoot": "projects/crb-lib-nav/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/crb-lib-nav/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/crb-lib-nav/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/crb-lib-nav/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "dev.corbie.www": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dev.corbie.www",
+      "sourceRoot": "projects/dev.corbie.www/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/dev.corbie.www/src/main.ts",
+            "tsConfig": "projects/dev.corbie.www/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/dev.corbie.www/public"
+              }
+            ],
+            "styles": [
+              "projects/dev.corbie.www/src/styles.scss"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dev.corbie.www:build:production"
+            },
+            "development": {
+              "buildTarget": "dev.corbie.www:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/dev.corbie.www/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/dev.corbie.www/public"
+              }
+            ],
+            "styles": [
+              "projects/dev.corbie.www/src/styles.scss"
+            ]
+          }
+        }
+      }
+    },
+    "crb-lib-icons": {
+      "projectType": "library",
+      "root": "projects/crb-lib-icons",
+      "sourceRoot": "projects/crb-lib-icons/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/crb-lib-icons/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/crb-lib-icons/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/crb-lib-icons/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "crb-lib-local-storage": {
+      "projectType": "library",
+      "root": "projects/crb-lib-local-storage",
+      "sourceRoot": "projects/crb-lib-local-storage/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/crb-lib-local-storage/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/crb-lib-local-storage/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/crb-lib-local-storage/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "crb-lib-clipboard": {
+      "projectType": "library",
+      "root": "projects/crb-lib-clipboard",
+      "sourceRoot": "projects/crb-lib-clipboard/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/crb-lib-clipboard/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/crb-lib-clipboard/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/crb-lib-clipboard/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  }
+}

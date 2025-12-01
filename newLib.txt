@@ -1,0 +1,7 @@
+https://medium.com/angular-in-depth/step-by-step-guide-to-creating-your-first-library-in-angular-6827276bfc9f
+ng generate library <library-name>
+add npm run commands and run them - build-lib and pack-lib
+    ng build crb-lib-nav
+    cd dist/crb-lib-nav && npm pack && cd ../..
+npm install <path-to-tgz-file>
+import { LibraryModule} from 'library';

@@ -1,0 +1,18 @@
+:host {
+  --main-bg-color: #ffffff;
+  --sec-bg-color: #dee4e7;
+  --main-fg-color: #222222;
+  --sec-fg-color: #222222;
+  --input-bg-color: rgba(0, 0, 0, 0.1);
+  --input-bg-disabled-color: rgba(0, 0, 0, 0.025);
+  color: var(--main-fg-color);
+  background: var(--main-bg-color);
+}
+:host.darkMode {
+  --main-bg-color: #37474f;
+  --sec-bg-color: #222222;
+  --main-fg-color: #ffffff;
+  --sec-fg-color: #ffd801;
+  --input-bg-color: rgba(255, 255, 255, 0.1);
+  --input-bg-disabled-color: rgba(255, 255, 255, 0.025);
+}
