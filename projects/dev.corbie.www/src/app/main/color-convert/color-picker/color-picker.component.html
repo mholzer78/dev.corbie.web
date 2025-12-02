@@ -1,11 +1,9 @@
-<label>
-  <span class="sr-only">Color Picker</span>
-  <input
-    type="color"
-    id="colorPicker"
-    name="colorPicker"
-    [value]="color()"
-    (change)="updateColor($event)"
-    [disabled]="disabled() == 'true'"
-  />
-</label>
+<span class="sr-only">Color Picker</span>
+<input
+  type="color"
+  [id]="ident()"
+  [name]="ident()"
+  [value]="color()"
+  (change)="updateColor($event)"
+  [disabled]="disabled() == 'true'"
+/>

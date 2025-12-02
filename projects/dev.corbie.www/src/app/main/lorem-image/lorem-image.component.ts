@@ -65,7 +65,7 @@ export class LoremImageComponent extends SiteBlueprint implements OnInit, OnDest
   }
 
   hex2rgb(hex: string) {
-    let hexInt = parseInt(hex.slice(1), 16);
+    let hexInt = Number.parseInt(hex.slice(1), 16);
     let r = (hexInt >> 16) & 255;
     let g = (hexInt >> 8) & 255;
     let b = hexInt & 255;

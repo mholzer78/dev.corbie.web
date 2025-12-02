@@ -12,6 +12,7 @@ export class ColorPickerComponent {
   changeColor = output<string>();
 
   disabled = input();
+  ident = input();
 
   updateColor(event: Event) {
     this.changeColor.emit((event.target as HTMLInputElement).value);

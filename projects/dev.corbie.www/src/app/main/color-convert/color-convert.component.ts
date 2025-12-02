@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import cbConvert from '@corbie.dev/color-convert';
 
@@ -22,8 +22,7 @@ export class ColorConvertComponent extends SiteBlueprint implements OnInit, OnDe
   masterR = signal(0);
   masterG = signal(0);
   masterB = signal(0);
-  master = signal([0.0, 0]);
-  //  master = computed(() => [this.masterR(), this.masterG(), this.masterB()]);
+  master = signal([0, 0, 0]);
   names = this.colorConvertService.names;
   codes = this.colorConvertService.codes;
 
@@ -166,12 +165,12 @@ export class ColorConvertComponent extends SiteBlueprint implements OnInit, OnDe
         let tempNumberArray: number[] = [];
         let valid = true;
         tempStringArray.forEach((item, index) => {
-          tempNumberArray.push(parseInt(item));
+          tempNumberArray.push(Number.parseInt(item));
           if (
             item == '' ||
-            parseInt(item) < 0 ||
-            (index == 0 && parseInt(item) > 360) ||
-            (index > 0 && parseInt(item) > 100)
+            Number.parseInt(item) < 0 ||
+            (index == 0 && Number.parseInt(item) > 360) ||
+            (index > 0 && Number.parseInt(item) > 100)
           ) {
             valid = false;
           }
@@ -211,8 +210,8 @@ export class ColorConvertComponent extends SiteBlueprint implements OnInit, OnDe
     let valid = true;
     if (rgbStringArray.length >= 3 && rgbStringArray[2] !== '') {
       for (let i = 0; i <= 2; i++) {
-        valid = valid && parseInt(rgbStringArray[i]) >= 0 && parseInt(rgbStringArray[i]) <= 255;
-        rgbNumberArray[i] = parseInt(rgbStringArray[i]);
+        valid = valid && Number.parseInt(rgbStringArray[i]) >= 0 && Number.parseInt(rgbStringArray[i]) <= 255;
+        rgbNumberArray[i] = Number.parseInt(rgbStringArray[i]);
       }
       if (valid) {
         this.updateMaster(rgbNumberArray);
@@ -228,7 +227,7 @@ export class ColorConvertComponent extends SiteBlueprint implements OnInit, OnDe
     let valid = true;
     cmykStringArray.forEach((item) => {
       cmykNumberArray.push(parseInt(item));
-      if (item == '' || parseInt(item) < 0 || parseInt(item) > 100) {
+      if (item == '' || Number.parseInt(item) < 0 || Number.parseInt(item) > 100) {
         valid = false;
       }
     });

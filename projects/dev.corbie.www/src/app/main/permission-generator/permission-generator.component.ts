@@ -85,7 +85,7 @@ export class PermissionGeneratorComponent
   }
 
   onChangeNumber(event: string) {
-    let value = parseInt(event);
+    let value = Number.parseInt(event);
     let tempArray: boolean[] = [];
     convert.forEach((convertItem, index: number) => {
       if (value - convertItem.number >= 0) {
@@ -123,10 +123,10 @@ export class PermissionGeneratorComponent
   changePermChar() {
     let tempChar: string = '-';
     this.permBool().forEach((item: boolean, index: number) => {
-      if (!item) {
-        tempChar += '-';
-      } else {
-        tempChar += convert[index].char;
+      if (item) {
+          tempChar += convert[index].char;
+        } else {
+          tempChar += '-';
       }
     });
     this.permChar.set(tempChar);

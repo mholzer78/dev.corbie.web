@@ -90,8 +90,9 @@
     />
   </form>
   <form class="crbInput">
-    <label>Colorpicker</label>
+    <label for="picker">Colorpicker</label>
     <app-color-picker
+      ident="picker"
       [(color)]="colorPicker"
       (changeColor)="changeColorHandler($event)"
       disabled="false"
@@ -158,8 +159,9 @@
     </div>
   </form>
   <form class="crbInput">
-    <label>Preview websafe</label>
+    <label for="pickerWebsafe">Preview websafe</label>
     <app-color-picker
+      ident="pickerWebsafe"
       [(color)]="colorPickerWeb"
       (changeColor)="changeColorHandler($event)"
       disabled="true"
