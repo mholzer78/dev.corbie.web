@@ -67,9 +67,9 @@ export class PasswordGeneratorComponent
     let lastIndex = -1;
     array.forEach(random => {
       let randomArray = random.toString().split('');
-      let index = Number.parseInt(randomArray[randomArray.length - 1]);
+      let index = Number.parseInt(randomArray.at(-1)!);
       if (index === lastIndex) {
-        index = Number.parseInt(randomArray[randomArray.length - 2])
+        index = Number.parseInt(randomArray.at(-2)!)
       }
       result += threshold.charAt(Math.floor(index / 10 * charactersLength));
       lastIndex = index;

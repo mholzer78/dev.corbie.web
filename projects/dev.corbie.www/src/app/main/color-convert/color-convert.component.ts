@@ -226,7 +226,7 @@ export class ColorConvertComponent extends SiteBlueprint implements OnInit, OnDe
     let cmykNumberArray: number[] = [];
     let valid = true;
     cmykStringArray.forEach((item) => {
-      cmykNumberArray.push(parseInt(item));
+      cmykNumberArray.push(Number.parseInt(item));
       if (item == '' || Number.parseInt(item) < 0 || Number.parseInt(item) > 100) {
         valid = false;
       }

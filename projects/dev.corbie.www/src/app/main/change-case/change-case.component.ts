@@ -11,10 +11,7 @@ import { CrbClipboard } from 'crb-lib-clipboard';
   templateUrl: './change-case.component.html',
   styleUrl: './change-case.component.scss',
 })
-export class ChangeCaseComponent
-  extends SiteBlueprint
-  implements OnInit, OnDestroy
-{
+export class ChangeCaseComponent extends SiteBlueprint implements OnInit, OnDestroy {
   textOriginal = '';
   text = signal('');
   option = signal('');
@@ -45,8 +42,6 @@ export class ChangeCaseComponent
     this.store2storage();
   }
   onChangeOption(event: Event) {
-    console.log('Hier', this.textOriginal);
-//    this.option.set((event.target as HTMLInputElement).value);
     this.text.set(this.changeText());
     this.store2storage();
   }
@@ -60,8 +55,7 @@ export class ChangeCaseComponent
       case 'capWord': {
         let words = this.text().toLowerCase().split(' ');
         words.forEach((word, index) => {
-          words[index] =
-            [...word][0].toUpperCase() + [...word].slice(1).join('');
+          words[index] = [...word][0].toUpperCase() + [...word].slice(1).join('');
         });
         return words.join(' ');
       }
@@ -72,7 +66,7 @@ export class ChangeCaseComponent
         sentences.forEach((sentence, index) => {
           let start = -1;
           for (let i = 0; i < sentence.length; i++) {
-            let code = sentence.charCodeAt(i);
+            let code = sentence.codePointAt(i) || 0;
             if (
               (code > 47 && code < 58) || // numeric (0-9)
               (code > 64 && code < 91) || // upper alpha (A-Z)

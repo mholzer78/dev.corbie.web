@@ -2,7 +2,7 @@ import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'crb-clipboard',
-    standalone: true,
+  standalone: true,
   imports: [],
   templateUrl: './crb-lib-clipboard.html',
   styleUrl: './crb-lib-clipboard.scss',
@@ -24,7 +24,6 @@ export class CrbClipboard {
 
     this.success.set(true);
     setTimeout(() => {
-        console.log('Hier');
       this.success.set(false);
     }, 2500);
   }
