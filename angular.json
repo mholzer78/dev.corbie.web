@@ -3,53 +3,27 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "crb-lib-nav": {
-      "projectType": "library",
-      "root": "projects/crb-lib-nav",
-      "sourceRoot": "projects/crb-lib-nav/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/crb-lib-nav/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/crb-lib-nav/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/crb-lib-nav/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "dev.corbie.www": {
+    "www.corbie.dev": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/dev.corbie.www",
-      "sourceRoot": "projects/dev.corbie.www/src",
+      "root": "projects/www.corbie.dev",
+      "sourceRoot": "projects/www.corbie.dev/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/dev.corbie.www/src/main.ts",
-            "tsConfig": "projects/dev.corbie.www/tsconfig.app.json",
+            "browser": "projects/www.corbie.dev/src/main.ts",
+            "tsConfig": "projects/www.corbie.dev/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/dev.corbie.www/public"
+                "input": "projects/www.corbie.dev/public"
               }
             ],
             "styles": ["projects/styles/basic.scss"]
@@ -82,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dev.corbie.www:build:production"
+              "buildTarget": "www.corbie.dev:build:production"
             },
             "development": {
-              "buildTarget": "dev.corbie.www:build:development"
+              "buildTarget": "www.corbie.dev:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,12 +70,12 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/dev.corbie.www/tsconfig.spec.json",
+            "tsConfig": "projects/www.corbie.dev/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/dev.corbie.www/public"
+                "input": "projects/www.corbie.dev/public"
               }
             ],
             "styles": ["projects/styles/basic.scss"]
@@ -109,105 +83,27 @@
         }
       }
     },
-    "crb-lib-icons": {
-      "projectType": "library",
-      "root": "projects/crb-lib-icons",
-      "sourceRoot": "projects/crb-lib-icons/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/crb-lib-icons/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/crb-lib-icons/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/crb-lib-icons/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "crb-lib-local-storage": {
-      "projectType": "library",
-      "root": "projects/crb-lib-local-storage",
-      "sourceRoot": "projects/crb-lib-local-storage/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/crb-lib-local-storage/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/crb-lib-local-storage/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/crb-lib-local-storage/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "crb-lib-clipboard": {
-      "projectType": "library",
-      "root": "projects/crb-lib-clipboard",
-      "sourceRoot": "projects/crb-lib-clipboard/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/crb-lib-clipboard/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/crb-lib-clipboard/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/crb-lib-clipboard/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "dev.corbie.api": {
+    "api.corbie.dev": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/dev.corbie.api",
-      "sourceRoot": "projects/dev.corbie.api/src",
+      "root": "projects/api.corbie.dev",
+      "sourceRoot": "projects/api.corbie.dev/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/dev.corbie.api/src/main.ts",
-            "tsConfig": "projects/dev.corbie.api/tsconfig.app.json",
+            "browser": "projects/api.corbie.dev/src/main.ts",
+            "tsConfig": "projects/api.corbie.dev/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/dev.corbie.api/public"
+                "input": "projects/api.corbie.dev/public"
               }
             ],
             "styles": ["projects/styles/basic.scss"]
@@ -240,10 +136,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dev.corbie.api:build:production"
+              "buildTarget": "api.corbie.dev:build:production"
             },
             "development": {
-              "buildTarget": "dev.corbie.api:build:development"
+              "buildTarget": "api.corbie.dev:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -254,12 +150,12 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/dev.corbie.api/tsconfig.spec.json",
+            "tsConfig": "projects/api.corbie.dev/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/dev.corbie.api/public"
+                "input": "projects/api.corbie.dev/public"
               }
             ],
             "styles": ["projects/styles/basic.scss"]
@@ -267,20 +163,20 @@
         }
       }
     },
-    "crb-lib-http404": {
+    "@libs/clipboard": {
       "projectType": "library",
-      "root": "projects/crb-lib-http404",
-      "sourceRoot": "projects/crb-lib-http404/src",
+      "root": "projects/libs/clipboard",
+      "sourceRoot": "projects/libs/clipboard/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/crb-lib-http404/tsconfig.lib.prod.json"
+              "tsConfig": "projects/libs/clipboard/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/crb-lib-http404/tsconfig.lib.json"
+              "tsConfig": "projects/libs/clipboard/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -288,7 +184,111 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/crb-lib-http404/tsconfig.spec.json"
+            "tsConfig": "projects/libs/clipboard/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "@libs/icons": {
+      "projectType": "library",
+      "root": "projects/libs/icons",
+      "sourceRoot": "projects/libs/icons/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/icons/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/icons/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/libs/icons/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "@libs/http404": {
+      "projectType": "library",
+      "root": "projects/libs/http404",
+      "sourceRoot": "projects/libs/http404/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/http404/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/http404/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/libs/http404/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "@libs/local-storage": {
+      "projectType": "library",
+      "root": "projects/libs/local-storage",
+      "sourceRoot": "projects/libs/local-storage/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/local-storage/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/local-storage/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/libs/local-storage/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "@libs/nav": {
+      "projectType": "library",
+      "root": "projects/libs/nav",
+      "sourceRoot": "projects/libs/nav/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libs/nav/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libs/nav/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/libs/nav/tsconfig.spec.json"
           }
         }
       }

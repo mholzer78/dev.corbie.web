@@ -1,14 +1,13 @@
 {
-  "name": "dev.corbie.web",
-  "version": "0.0.0",
+  "name": "dev.corbie.frontend",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:apps": "ng build www.corbie.dev && ng build api.corbie.dev",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:libs": "ng build crb-lib-icons && ng build crb-lib-local-storage && ng build crb-lib-clipboard && ng build crb-lib-nav && ng build crb-lib-http404",
-    "pack:libs": "cd dist/crb-lib-icons && npm pack && cd .. && cd crb-lib-local-storage && npm pack && cd .. && cd crb-lib-clipboard && npm pack && cd .. && cd crb-lib-nav && npm pack && cd .. && cd crb-lib-http404 && npm pack && cd ../.."
+    "build:libs": "ng build @libs/icons && ng build @libs/local-storage && ng build @libs/clipboard && ng build @libs/nav && ng build @libs/http404"
   },
   "prettier": {
     "printWidth": 100,
@@ -32,11 +31,6 @@
     "@angular/router": "^20.3.0",
     "@corbie.dev/color-convert": "^1.0.1",
     "@corbie.dev/lorem-image": "^1.0.1",
-    "crb-lib-clipboard": "file:dist/crb-lib-clipboard/crb-lib-clipboard-0.0.1.tgz",
-    "crb-lib-http404": "file:dist/crb-lib-http404/crb-lib-http404-0.0.1.tgz",
-    "crb-lib-icons": "file:dist/crb-lib-icons/crb-lib-icons-0.0.1.tgz",
-    "crb-lib-local-storage": "file:dist/crb-lib-local-storage/crb-lib-local-storage-0.0.1.tgz",
-    "crb-lib-nav": "file:dist/crb-lib-nav/crb-lib-nav-0.0.1.tgz",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

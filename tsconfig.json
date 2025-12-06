@@ -4,16 +4,32 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@lib/clipboard": [
+        "./dist/lib/clipboard"
+      ],
+      "@lib/icons": [
+        "./dist/lib/icons"
+      ],
+      "@libs/clipboard": [
+        "./dist/libs/clipboard"
+      ],
+      "@libs/http404": [
+        "./dist/libs/http404"
+      ],
+      "@libs/icons": [
+        "./dist/libs/icons"
+      ],
+      "@libs/local-storage": [
+        "./dist/libs/local-storage"
+      ],
+      "@libs/nav": [
+        "./dist/libs/nav"
+      ],
       "crb-lib-clipboard": ["./dist/crb-lib-clipboard"],
       "crb-lib-icons": ["./dist/crb-lib-icons"],
-
       "crb-lib-nav": ["./dist/crb-lib-nav"],
-      "crb-lib-local-storage": [
-        "./dist/crb-lib-local-storage"
-      ],
-      "crb-lib-http404": [
-        "./dist/crb-lib-http404"
-      ]
+      "crb-lib-local-storage": ["./dist/crb-lib-local-storage"],
+      "crb-lib-http404": ["./dist/crb-lib-http404"]
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -43,10 +59,10 @@
       "path": "./projects/crb-lib-nav/tsconfig.spec.json"
     },
     {
-      "path": "./projects/dev.corbie.www/tsconfig.app.json"
+      "path": "./projects/www.corbie.dev/tsconfig.app.json"
     },
     {
-      "path": "./projects/dev.corbie.www/tsconfig.spec.json"
+      "path": "./projects/www.corbie.dev/tsconfig.spec.json"
     },
     {
       "path": "./projects/crb-lib-icons/tsconfig.lib.json"
@@ -72,17 +88,80 @@
     {
       "path": "./projects/crb-lib-http404/tsconfig.spec.json"
     },
-        {
-      "path": "./projects/dev.corbie.www/tsconfig.app.json"
+    {
+      "path": "./projects/www.corbie.dev/tsconfig.app.json"
     },
     {
-      "path": "./projects/dev.corbie.www/tsconfig.spec.json"
+      "path": "./projects/www.corbie.dev/tsconfig.spec.json"
     },
     {
-      "path": "./projects/dev.corbie.api/tsconfig.app.json"
+      "path": "./projects/api.corbie.dev/tsconfig.app.json"
     },
     {
-      "path": "./projects/dev.corbie.api/tsconfig.spec.json"
+      "path": "./projects/api.corbie.dev/tsconfig.spec.json"
     },
+    {
+      "path": "./projects/corbie.dev/ng-lib-styles/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/corbie.dev/ng-lib-styles/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/lib/ng-lib-styles/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/lib/ng-lib-styles/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/libs/ng-lib-styles/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/libs/ng-lib-styles/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/libs/ng-lib-assets/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/lib/clipboard/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/lib/clipboard/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/lib/icons/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/lib/icons/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/libs/clipboard/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/libs/clipboard/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/libs/icons/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/libs/icons/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/libs/http404/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/libs/http404/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/libs/local-storage/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/libs/local-storage/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/libs/nav/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/libs/nav/tsconfig.spec.json"
+    }
   ]
 }

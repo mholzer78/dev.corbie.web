@@ -1,0 +1,100 @@
+<div>
+  <span class="pseudoLabel">Preview</span>
+  <div class="preview">
+    <div class="imagePreview">
+      <img id="imgPreview" [width]="width()" [height]="height()" [src]="svgDataUrl()" alt="Preview"/>
+    </div>
+  </div>
+  <form class="crbInput">
+    <label for="inputHEX">Color</label>
+
+    <div class="flex">
+      <input
+        id="inputHEX"
+        name="inputHEX"
+        #inputHEX
+        type="text"
+        maxlength="7"
+        size="7"
+        placeholder="#000000"
+        [value]="color()"
+        (change)="changeColorHandler($event)"
+      />
+      <input
+        type="color"
+        id="colorPicker"
+        class="ml5"
+        name="colorPicker"
+        [value]="colorPicker()"
+        (change)="changeColorHandler($event)"
+      />
+    </div>
+    <label for="inputWidth">Width:</label>
+    <div class="flex">
+      <input
+        id="inputWidth"
+        name="inputWidth"
+        type="number"
+        maxlength="3"
+        size="3"
+        placeholder="0"
+        min="10"
+        max="3840"
+        [(ngModel)]="width"
+        (input)="updateImage()"
+      />
+      <input
+        id="sliderWidth"
+        name="sliderWidth"
+        type="range"
+        min="10"
+        max="3840"
+        class="slider"
+        id="width"
+        [(ngModel)]="width"
+        (input)="updateImage()"
+      />
+    </div>
+    <label for="inputHeight">Height:</label>
+    <div class="flex">
+      <input
+        id="inputHeight"
+        name="inputHeight"
+        type="number"
+        maxlength="3"
+        size="3"
+        placeholder="0"
+        min="10"
+        max="3840"
+        [(ngModel)]="height"
+        (input)="updateImage()"
+      />
+      <input
+        id="sliderHeight"
+        name="sliderHeight"
+        type="range"
+        min="10"
+        max="3840"
+        class="slider"
+        id="height"
+        [(ngModel)]="height"
+        (input)="updateImage()"
+      />
+    </div>
+  </form>
+  <div class="flex">
+    <a
+      class="iconWrapper flex link"
+      href="javascript:void(0)"
+      (keypress)="download()"
+      (click)="download()"
+    >
+      Download:
+      <crb-icon image="download" width="40" height="40" />
+    </a>
+    <a class="iconWrapper flex link" [href]="link()" target="_blank">
+      Link for direct access:
+      <crb-icon image="link" width="40" height="40" />
+    </a>
+  </div>
+</div>

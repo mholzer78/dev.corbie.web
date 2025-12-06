@@ -32,8 +32,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/mholzer78/dev.corbie.www">
-    <img src="projects/dev.corbie.www/public/assets/corbie.svg" alt="Logo" width="80" height="80">
+  <a href="https://github.com/mholzer78/www.corbie.dev">
+    <img src="projects/www.corbie.dev/public/assets/corbie.svg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">corbie.dev</h3>
@@ -112,7 +112,7 @@ Project Link: [https://corbie.dev](https://corbie.dev)
 [license-url]: https://github.com/mholzer78/codecorbie/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/mholzer78/
-[product-screenshot]: projects/dev.corbie.www/public/assets/screenshot.png
+[product-screenshot]: projects/www.corbie.dev/public/assets/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
