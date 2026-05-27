@@ -9,6 +9,7 @@ interface Storage {
   loremIpsum: object;
   loremImage: object;
   timeconverter: object;
+  aspectRatio: object;
 }
 
 export interface StorageMain {
@@ -32,6 +33,7 @@ export class LocalStorage {
     loremIpsum: { length: 2, choice: 'paragraphs' },
     loremImage: { color: '#ffd801', width: 400, height: 200 },
     timeconverter: { range: { min: 1, max: 4 }, timeSlots: [] },
+    aspectRatio: { width: 1920, height: 1080, ratioX: 16, ratioY: 9 },
   };
 
   constructor() {
@@ -51,7 +53,8 @@ export class LocalStorage {
       | 'changeCase'
       | 'loremIpsum'
       | 'loremImage'
-      | 'timeconverter',
+      | 'timeconverter'
+      | 'aspectRatio',
   ) {
     if (key) {
       return this.storage[key];
@@ -69,7 +72,8 @@ export class LocalStorage {
       | 'changeCase'
       | 'loremIpsum'
       | 'loremImage'
-      | 'timeconverter',
+      | 'timeconverter'
+      | 'aspectRatio',
     value: object,
   ) {
     let tempStorage = { ...this.storage };

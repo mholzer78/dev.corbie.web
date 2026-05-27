@@ -12,7 +12,8 @@ export abstract class SiteBlueprint {
     | 'changeCase'
     | 'loremIpsum'
     | 'loremImage'
-    | 'timeconverter' = '';
+    | 'timeconverter'
+    | 'aspectRatio' = '';
 
   getStorage(key: typeof this.storageKey) {
     return this.localStorageService.getProp(key);
@@ -25,7 +26,8 @@ export abstract class SiteBlueprint {
       | 'changeCase'
       | 'loremIpsum'
       | 'loremImage'
-      | 'timeconverter',
+      | 'timeconverter'
+      | 'aspectRatio',
     value: {},
   ): void {
     this.localStorageService.setProp(key, value);

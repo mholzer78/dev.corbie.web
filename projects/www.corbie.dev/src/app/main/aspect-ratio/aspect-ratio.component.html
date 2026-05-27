@@ -1,0 +1,112 @@
+<header>
+  <h1>Aspect Ratio</h1>
+  <h2>Calculate and convert aspect ratios for images and videos</h2>
+  <hr />
+</header>
+<div class="card">
+  <div class="inner">
+    <form class="crbInput">
+      <div class="flex">
+        <label for="inputPreset">Common Ratios</label>
+      </div>
+      <select
+        id="inputPreset"
+        name="inputPreset"
+        #inputPreset
+        [(ngModel)]="ratioName"
+        (ngModelChange)="changeRatioHandler($event)"
+      >
+        <option [value]="'default'" disabled>custom</option>
+        @for (commonName of commonNames; track $index) {
+          <option [value]="commonRatios[$index]">
+            <span>{{ commonName }}</span>
+          </option>
+        }
+      </select>
+    </form>
+  </div>
+</div>
+<div class="card-wrapper">
+  <div class="card">
+    <div class="inner">
+      <form class="crbInput">
+        <label for="widthRatio">Width (ratio)</label>
+        <input
+          #inputWidthRatio
+          type="number"
+          id="widthRatio"
+          name="widthRatio"
+          maxlength="10"
+          placeholder="0"
+          min="0"
+          max="1000"
+          placeholder="0"
+          [(ngModel)]="ratioWidth"
+          (ngModelChange)="changeRatioHandler(inputWidthRatio.value, 'ratio', 'width')"
+        />
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="inner">
+      <form class="crbInput">
+        <label for="heightRatio">Height (ratio)</label>
+        <input
+          #inputHeightRatio
+          type="number"
+          id="heightRatio"
+          name="heightRatio"
+          maxlength="10"
+          placeholder="0"
+          min="0"
+          max="1000"
+          placeholder="0"
+          [(ngModel)]="ratioHeight"
+          (ngModelChange)="changeRatioHandler(inputHeightRatio.value, 'ratio', 'height')"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+<div class="card-wrapper">
+  <div class="card">
+    <div class="inner">
+      <form class="crbInput">
+        <label for="widthPixels">Width (pixels)</label>
+        <input
+          #inputWidthPixels
+          type="number"
+          id="widthPixels"
+          name="widthPixels"
+          maxlength="10"
+          placeholder="0"
+          min="0"
+          max="1000"
+          placeholder="0"
+          [(ngModel)]="pixelWidth"
+          (ngModelChange)="changeRatioHandler(inputWidthPixels.value, 'pixels', 'width')"
+        />
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="inner">
+      <form class="crbInput">
+        <label for="heightPixels">Height (pixels)</label>
+        <input
+          #inputHeightPixels
+          type="number"
+          id="heightPixels"
+          name="heightPixels"
+          maxlength="10"
+          placeholder="0"
+          min="0"
+          max="1000"
+          placeholder="0"
+          [(ngModel)]="pixelHeight"
+          (ngModelChange)="changeRatioHandler(inputHeightPixels.value, 'pixels', 'height')"
+        />
+      </form>
+    </div>
+  </div>
+</div>
