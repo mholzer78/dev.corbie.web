@@ -1,0 +1,10 @@
+{
+  "default": {
+    "paths": ["test/features/**/*.feature"],
+    "import": ["test/steps/**/*.js", "test/support/**/*.js"],
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "format": ["progress", "json:test/results/cucumber_report.json"]
+  }
+}
