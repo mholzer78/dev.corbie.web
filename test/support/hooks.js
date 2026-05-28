@@ -19,7 +19,7 @@ Before(async function () {
   this.page = await this.context.newPage();
 });
 
-After(async function () {
+After(async function (scenario) {
   await this.page?.close();
   await this.context?.close();
 });
