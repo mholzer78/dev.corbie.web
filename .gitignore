@@ -11,6 +11,11 @@
 npm-debug.log
 yarn-error.log
 
+# Testing
+/test/reports
+/test/results
+/test/screenshots
+
 # IDEs and editors
 .idea/
 .project
