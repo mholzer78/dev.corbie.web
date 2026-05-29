@@ -1,63 +1,62 @@
 {
-  "name": "dev.corbie.frontend",
-  "version": "1.1.0",
-  "type": "module",
-  "scripts": {
-    "ng": "ng",
-    "start:www": "ng serve www.corbie.dev",
-    "start:api": "ng serve api.corbie.dev",
-    "build:apps": "ng build www.corbie.dev && ng build api.corbie.dev",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "test:e2e": "cucumber-js && node test/report.js",
-    "build:libs": "ng build @libs/icons && ng build @libs/header && ng build @libs/local-storage && ng build @libs/clipboard && ng build @libs/input-range && ng build @libs/nav && ng build @libs/http404"
-  },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/common": "^21.2.9",
-    "@angular/compiler": "^21.2.9",
-    "@angular/core": "^21.2.9",
-    "@angular/forms": "^21.2.9",
-    "@angular/platform-browser": "^21.2.9",
-    "@angular/router": "^21.2.9",
-    "@corbie.dev/color-convert": "^1.1.0",
-    "@corbie.dev/lorem-image": "^1.0.1",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "@angular/build": "^21.2.7",
-    "@angular/cli": "^21.2.7",
-    "@angular/compiler-cli": "^21.2.9",
-    "@cucumber/cucumber": "^12.9.0",
-    "@playwright/test": "^1.60.0",
-    "@types/jasmine": "~5.1.0",
-    "@types/node": "^25.9.1",
-    "baseline-browser-mapping": "^2.10.13",
-    "cucumber-html-reporter": "^7.2.0",
-    "jasmine-core": "~5.9.0",
-    "jsdom": "^27.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "ng-packagr": "^21.0.0",
-    "playwright": "^1.60.0",
-    "ts-node": "^10.9.2",
-    "typescript": "~5.9.2",
-    "vitest": "^4.0.8"
-  }
+    "name": "dev.corbie.frontend",
+    "version": "1.1.0",
+    "type": "module",
+    "scripts": {
+        "ng": "ng",
+        "start:www": "ng serve www.corbie.dev",
+        "start:api": "ng serve api.corbie.dev",
+        "build:apps": "ng build www.corbie.dev && ng build api.corbie.dev",
+        "build:libs": "ng build @libs/icons && ng build @libs/header && ng build @libs/local-storage && ng build @libs/clipboard && ng build @libs/input-range && ng build @libs/nav && ng build @libs/http404",
+        "test:e2e": "cucumber-js",
+        "test:report": "node test/report.js"
+    },
+    "prettier": {
+        "printWidth": 100,
+        "singleQuote": true,
+        "overrides": [
+            {
+                "files": "*.html",
+                "options": {
+                    "parser": "angular"
+                }
+            }
+        ]
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/common": "^21.2.9",
+        "@angular/compiler": "^21.2.9",
+        "@angular/core": "^21.2.9",
+        "@angular/forms": "^21.2.9",
+        "@angular/platform-browser": "^21.2.9",
+        "@angular/router": "^21.2.9",
+        "@corbie.dev/color-convert": "^1.1.0",
+        "@corbie.dev/lorem-image": "^1.0.1",
+        "rxjs": "~7.8.0",
+        "tslib": "^2.3.0"
+    },
+    "devDependencies": {
+        "@angular/build": "^21.2.7",
+        "@angular/cli": "^21.2.7",
+        "@angular/compiler-cli": "^21.2.9",
+        "@cucumber/cucumber": "^12.9.0",
+        "@playwright/test": "^1.60.0",
+        "@types/jasmine": "~5.1.0",
+        "@types/node": "^25.9.1",
+        "baseline-browser-mapping": "^2.10.13",
+        "cucumber-html-reporter": "^7.2.0",
+        "jasmine-core": "~5.9.0",
+        "jsdom": "^27.1.0",
+        "karma": "~6.4.0",
+        "karma-chrome-launcher": "~3.2.0",
+        "karma-coverage": "~2.2.0",
+        "karma-jasmine": "~5.1.0",
+        "karma-jasmine-html-reporter": "~2.1.0",
+        "ng-packagr": "^21.0.0",
+        "playwright": "^1.60.0",
+        "ts-node": "^10.9.2",
+        "typescript": "~5.9.2",
+        "vitest": "^4.0.8"
+    }
 }

@@ -3,7 +3,7 @@
   routerLinkActive="active"
   [routerLinkActiveOptions]="{ exact: true }"
 >
-  <crb-icon [image]="iconName" [width]="40" [height]="40" />
+  <crb-icon [aria-label]="page.title" [image]="iconName" [width]="40" [height]="40" />
   @if (showText) {
     <span> {{ page.title }}</span>
   }

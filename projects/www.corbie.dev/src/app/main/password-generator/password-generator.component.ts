@@ -1,9 +1,9 @@
 import { Component, computed, OnDestroy, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { SiteBlueprint } from '../SiteBlueprint';
 import { Clipboard } from '@libs/clipboard';
 import { Icons } from '@libs/icons';
-import { SiteBlueprint } from '../SiteBlueprint';
 
 const characters = [
   'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
