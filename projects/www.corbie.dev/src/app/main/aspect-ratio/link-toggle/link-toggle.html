@@ -1,9 +1,4 @@
-<div
-  class="iconButton"
-  (keypress)="toggleLink()"
-  (click)="toggleLink()"
-  attr.test="{{ ident() }} / {{ current() }}"
->
+<div>
   @if (ident() === current()) {
     <crb-icon image="lockClosed" width="20" height="20" />
   } @else {
