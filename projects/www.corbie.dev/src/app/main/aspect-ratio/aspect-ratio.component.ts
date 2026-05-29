@@ -33,9 +33,10 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
   );
   ratioPercentage = computed(
     () =>
-      ((Number.parseFloat(this.ratioWidth()) / Number.parseFloat(this.ratioHeight())) * 100)
-        .toFixed(2)
-        .replace(/\.?0+$/, '') + '%',
+      (
+        Math.round((Number(this.ratioWidth()) / Number.parseFloat(this.ratioHeight())) * 10000) /
+        100
+      ).toString() + '%',
   );
 
   ngOnInit(): void {
@@ -151,6 +152,6 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
     this.checkRatioForDropdown();
   }
 
-  formatRatio = (n: number) => n.toFixed(2).replace(/\.?0+$/, '');
+  formatRatio = (n: number) => (Math.round(n * 100) / 100).toString();
   formatPixel = (n: number) => n.toFixed(0);
 }
