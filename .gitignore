@@ -6,10 +6,20 @@
 /out-tsc
 /bazel-out
 
+# Test output
+/test/results
+/test/reports
+/test/screenshots
+
 # Node
 /node_modules
 npm-debug.log
 yarn-error.log
+
+# Testing
+/test/reports
+/test/results
+/test/screenshots
 
 # IDEs and editors
 .idea/
