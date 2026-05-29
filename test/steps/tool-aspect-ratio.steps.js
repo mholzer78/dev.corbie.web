@@ -1,4 +1,4 @@
-import { Given, When, Then } from '@cucumber/cucumber';
+import { Given, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
 Given('the user is using Aspect Ratio Tool', async function () {

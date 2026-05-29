@@ -1,5 +1,4 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { expect } from '@playwright/test';
 
 Given('the user is on {string}', async function (url) {
   await this.page.goto(url);

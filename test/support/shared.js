@@ -1,4 +1,4 @@
-import { Given, When, Then } from '@cucumber/cucumber';
+import { When, Then } from '@cucumber/cucumber';
 
 When('the user changes {string} to {string}', async function (key, input) {
   if (key === 'inputName') {

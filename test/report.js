@@ -1,5 +1,5 @@
 import reporter from 'cucumber-html-reporter';
-import fs from 'fs';
+import fs from 'node:fs';
 const currentDate = new Date().toISOString();
 const options = {
   brandTitle: 'Feature Test Report',

@@ -29,11 +29,11 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
   ratioName = signal('16,9');
   ratioSimplified = computed(() => this.simplifyRatio());
   ratioDecimal = computed(() =>
-    (parseFloat(this.ratioWidth()) / parseFloat(this.ratioHeight())).toFixed(2),
+    (Number.parseFloat(this.ratioWidth()) / Number.parseFloat(this.ratioHeight())).toFixed(2),
   );
   ratioPercentage = computed(
     () =>
-      ((parseFloat(this.ratioWidth()) / parseFloat(this.ratioHeight())) * 100)
+      ((Number.parseFloat(this.ratioWidth()) / Number.parseFloat(this.ratioHeight())) * 100)
         .toFixed(2)
         .replace(/\.?0+$/, '') + '%',
   );
@@ -76,46 +76,29 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
 
   updateValues(group: string, dimension: string): void {
     this.store2storage();
-    const ratioWidthNum = parseFloat(this.ratioWidth());
-    const ratioHeightNum = parseFloat(this.ratioHeight());
-    const pixelWidthNum = parseFloat(this.pixelWidth());
-    const pixelHeightNum = parseFloat(this.pixelHeight());
-    if (this.modeLink() === 'width/height') {
-      if (group === 'ratio') {
-        if (dimension === 'width') {
-          this.pixelWidth.set(((pixelHeightNum / ratioHeightNum) * ratioWidthNum).toFixed(0));
-        } else {
-          this.pixelHeight.set(((pixelWidthNum / ratioWidthNum) * ratioHeightNum).toFixed(0));
-        }
-      } else {
-        if (dimension === 'width') {
-          this.ratioWidth.set(
-            ((ratioHeightNum * pixelWidthNum) / pixelHeightNum).toFixed(2).replace(/\.?0+$/, ''),
-          );
-        } else {
-          this.ratioHeight.set(
-            ((ratioWidthNum * pixelHeightNum) / pixelWidthNum).toFixed(2).replace(/\.?0+$/, ''),
-          );
-        }
-      }
-    } else {
-      if (group === 'ratio') {
-        if (dimension === 'width') {
-          this.ratioHeight.set(
-            (pixelHeightNum / (pixelWidthNum / ratioWidthNum)).toFixed(2).replace(/\.?0+$/, ''),
-          );
-        } else {
-          this.ratioWidth.set(
-            (pixelWidthNum / (pixelHeightNum / ratioHeightNum)).toFixed(2).replace(/\.?0+$/, ''),
-          );
-        }
-      } else {
-        if (dimension === 'width') {
-          this.pixelHeight.set(((pixelWidthNum / ratioWidthNum) * ratioHeightNum).toFixed(0));
-        } else {
-          this.pixelWidth.set(((pixelHeightNum / ratioHeightNum) * ratioWidthNum).toFixed(0));
-        }
-      }
+    const ratioWidthNum = Number.parseFloat(this.ratioWidth());
+    const ratioHeightNum = Number.parseFloat(this.ratioHeight());
+    const pixelWidthNum = Number.parseFloat(this.pixelWidth());
+    const pixelHeightNum = Number.parseFloat(this.pixelHeight());
+
+    const widthHeightMode = this.modeLink() === 'width/height';
+
+    if (widthHeightMode && group === 'ratio' && dimension === 'width') {
+      this.pixelWidth.set(this.formatPixel((pixelHeightNum / ratioHeightNum) * ratioWidthNum));
+    } else if (widthHeightMode && group === 'ratio' && dimension === 'height') {
+      this.pixelHeight.set(this.formatPixel((pixelWidthNum / ratioWidthNum) * ratioHeightNum));
+    } else if (widthHeightMode && group !== 'ratio' && dimension === 'width') {
+      this.ratioWidth.set(this.formatRatio((ratioHeightNum * pixelWidthNum) / pixelHeightNum));
+    } else if (widthHeightMode && group !== 'ratio' && dimension === 'height') {
+      this.ratioHeight.set(this.formatRatio((ratioWidthNum * pixelHeightNum) / pixelWidthNum));
+    } else if (!widthHeightMode && group === 'ratio' && dimension === 'width') {
+      this.ratioHeight.set(this.formatRatio(pixelHeightNum / (pixelWidthNum / ratioWidthNum)));
+    } else if (!widthHeightMode && group === 'ratio' && dimension === 'height') {
+      this.ratioWidth.set(this.formatRatio(pixelWidthNum / (pixelHeightNum / ratioHeightNum)));
+    } else if (!widthHeightMode && group !== 'ratio' && dimension === 'width') {
+      this.pixelHeight.set(this.formatPixel((pixelWidthNum / ratioWidthNum) * ratioHeightNum));
+    } else if (!widthHeightMode && group !== 'ratio' && dimension === 'height') {
+      this.pixelWidth.set(this.formatPixel((pixelHeightNum / ratioHeightNum) * ratioWidthNum));
     }
 
     this.checkRatioForDropdown();
@@ -125,7 +108,8 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
   checkRatioForDropdown(): void {
     const found = this.commonRatios.find(
       (element) =>
-        element[0] == parseFloat(this.ratioWidth()) && element[1] == parseFloat(this.ratioHeight()),
+        element[0] == Number.parseFloat(this.ratioWidth()) &&
+        element[1] == Number.parseFloat(this.ratioHeight()),
     );
 
     if (found) {
@@ -136,9 +120,12 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
   }
 
   simplifyRatio(): string {
-    const divider = this.findGCD(parseFloat(this.ratioWidth()), parseFloat(this.ratioHeight()));
-    const simpliWidth = parseFloat(this.ratioWidth()) / divider;
-    const simpliHeight = parseFloat(this.ratioHeight()) / divider;
+    const divider = this.findGCD(
+      Number.parseFloat(this.ratioWidth()),
+      Number.parseFloat(this.ratioHeight()),
+    );
+    const simpliWidth = Number.parseFloat(this.ratioWidth()) / divider;
+    const simpliHeight = Number.parseFloat(this.ratioHeight()) / divider;
     return simpliWidth + ':' + simpliHeight;
   }
 
@@ -161,4 +148,7 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
     this.pixelHeight.set(tempPixelWidth);
     this.checkRatioForDropdown();
   }
+
+  formatRatio = (n: number) => n.toFixed(2).replace(/\.?0+$/, '');
+  formatPixel = (n: number) => n.toFixed(0);
 }
