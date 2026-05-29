@@ -23,11 +23,6 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
   pixelHeight = signal('1080');
   modeLink = signal<ModeLink>('width/height');
 
-  ratioWidthNum = computed(() => Number.parseFloat(this.ratioWidth()));
-  ratioHeightNum = computed(() => Number.parseFloat(this.ratioHeight()));
-  pixelWidthNum = computed(() => Number.parseFloat(this.pixelWidth()));
-  pixelHeightNum = computed(() => Number.parseFloat(this.pixelHeight()));
-
   commonNames = this.aspectRatioService.names;
   commonRatios = this.aspectRatioService.ratios;
 
@@ -81,55 +76,35 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
 
   updateValues(group: string, dimension: string): void {
     this.store2storage();
+    const ratioWidthNum = Number.parseFloat(this.ratioWidth());
+    const ratioHeightNum = Number.parseFloat(this.ratioHeight());
+    const pixelWidthNum = Number.parseFloat(this.pixelWidth());
+    const pixelHeightNum = Number.parseFloat(this.pixelHeight());
 
-    if (this.modeLink() === 'width/height') {
-      this.updateWidthHeight(group, dimension);
-    } else {
-      this.updateRatioPixel(group, dimension);
+    const linkHorizontal = this.modeLink() === 'width/height';
+
+    if (
+      (linkHorizontal && group === 'ratio' && dimension === 'width') ||
+      (!linkHorizontal && group === 'pixels' && dimension === 'height')
+    ) {
+      this.pixelWidth.set(this.formatPixel((pixelHeightNum / ratioHeightNum) * ratioWidthNum));
+    } else if (
+      (linkHorizontal && group === 'ratio' && dimension === 'height') ||
+      (!linkHorizontal && group === 'pixels' && dimension === 'width')
+    ) {
+      this.pixelHeight.set(this.formatPixel((pixelWidthNum / ratioWidthNum) * ratioHeightNum));
+    } else if (linkHorizontal && group !== 'ratio' && dimension === 'width') {
+      this.ratioWidth.set(this.formatRatio((ratioHeightNum * pixelWidthNum) / pixelHeightNum));
+    } else if (linkHorizontal && group !== 'ratio' && dimension === 'height') {
+      this.ratioHeight.set(this.formatRatio((ratioWidthNum * pixelHeightNum) / pixelWidthNum));
+    } else if (!linkHorizontal && group === 'ratio' && dimension === 'width') {
+      this.ratioHeight.set(this.formatRatio(pixelHeightNum / (pixelWidthNum / ratioWidthNum)));
+    } else if (!linkHorizontal && group === 'ratio' && dimension === 'height') {
+      this.ratioWidth.set(this.formatRatio(pixelWidthNum / (pixelHeightNum / ratioHeightNum)));
     }
 
     this.checkRatioForDropdown();
     this.simplifyRatio();
-  }
-
-  updateWidthHeight(group: string, dimension: string): void {
-    if (group === 'ratio' && dimension === 'width') {
-      this.pixelWidth.set(
-        this.formatPixel((this.pixelHeightNum() / this.ratioHeightNum()) * this.ratioWidthNum()),
-      );
-    } else if (group === 'ratio' && dimension === 'height') {
-      this.pixelHeight.set(
-        this.formatPixel((this.pixelWidthNum() / this.ratioWidthNum()) * this.ratioHeightNum()),
-      );
-    } else if (group === 'pixels' && dimension === 'width') {
-      this.ratioWidth.set(
-        this.formatRatio((this.ratioHeightNum() * this.pixelWidthNum()) / this.pixelHeightNum()),
-      );
-    } else if (group === 'pixels' && dimension === 'height') {
-      this.ratioHeight.set(
-        this.formatRatio((this.ratioWidthNum() * this.pixelHeightNum()) / this.pixelWidthNum()),
-      );
-    }
-  }
-
-  updateRatioPixel(group: string, dimension: string): void {
-    if (group === 'ratio' && dimension === 'width') {
-      this.ratioHeight.set(
-        this.formatRatio(this.pixelHeightNum() / (this.pixelWidthNum() / this.ratioWidthNum())),
-      );
-    } else if (group === 'ratio' && dimension === 'height') {
-      this.ratioWidth.set(
-        this.formatRatio(this.pixelWidthNum() / (this.pixelHeightNum() / this.ratioHeightNum())),
-      );
-    } else if (group === 'pixels' && dimension === 'width') {
-      this.pixelHeight.set(
-        this.formatPixel((this.pixelWidthNum() / this.ratioWidthNum()) * this.ratioHeightNum()),
-      );
-    } else if (group === 'pixels' && dimension === 'height') {
-      this.pixelWidth.set(
-        this.formatPixel((this.pixelHeightNum() / this.ratioHeightNum()) * this.ratioWidthNum()),
-      );
-    }
   }
 
   checkRatioForDropdown(): void {
