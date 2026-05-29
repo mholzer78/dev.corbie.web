@@ -40,13 +40,29 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
 
   ngOnInit(): void {
     let storage = this.getStorage('aspectRatio');
-    //this.updateMaster(storage.master);
-    //this.master2all();
+
+    this.ratioWidth.set(storage.ratioWidth || this.ratioWidth());
+    this.ratioHeight.set(storage.ratioHeight || this.ratioHeight());
+    this.pixelWidth.set(storage.pixelWidth || this.pixelWidth());
+    this.pixelHeight.set(storage.pixelHeight || this.pixelHeight());
+    this.modeLink.set(storage.modeLink || this.modeLink());
+    this.checkRatioForDropdown();
   }
 
   ngOnDestroy(): void {
-    //this.store2storage();
+    this.store2storage();
   }
+
+  store2storage() {
+    this.setStorage('aspectRatio', {
+      ratioWidth: this.ratioWidth(),
+      ratioHeight: this.ratioHeight(),
+      pixelWidth: this.pixelWidth(),
+      pixelHeight: this.pixelHeight(),
+      modeLink: this.modeLink(),
+    });
+  }
+
   changeDropdownHandler(newValue: string): void {
     const ratio = newValue.split(',');
     this.ratioWidth.set(ratio[0]);
@@ -59,6 +75,7 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
   }
 
   updateValues(group: string, dimension: string): void {
+    this.store2storage();
     const ratioWidthNum = parseFloat(this.ratioWidth());
     const ratioHeightNum = parseFloat(this.ratioHeight());
     const pixelWidthNum = parseFloat(this.pixelWidth());

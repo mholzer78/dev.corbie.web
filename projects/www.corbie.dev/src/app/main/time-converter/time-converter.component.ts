@@ -77,7 +77,6 @@ export class TimeConverterComponent extends SiteBlueprint implements OnInit, OnD
 
   ngOnInit(): void {
     let storage = this.getStorage('timeconverter');
-    console.log(storage);
     this.range.set(storage.range || this.range());
     this.inputSlots.set(storage.inputSlots || this.inputSlots());
     this.changeValue();
