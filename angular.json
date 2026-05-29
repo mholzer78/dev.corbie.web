@@ -62,7 +62,10 @@
               "buildTarget": "www.corbie.dev:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "poll": 2000
+          }
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
@@ -143,7 +146,8 @@
             }
           },
           "options": {
-            "port": 4201
+            "port": 4201,
+            "poll": 2000
           },
           "defaultConfiguration": "development"
         },

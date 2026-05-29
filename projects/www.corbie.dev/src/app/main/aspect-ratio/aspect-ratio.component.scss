@@ -1,0 +1,13 @@
+div.flex {
+  flex-direction: row;
+  gap: 1rem;
+  form {
+    flex-grow: 10;
+  }
+  app-link-toggle {
+    flex-grow: 1;
+    align-self: flex-end;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+}

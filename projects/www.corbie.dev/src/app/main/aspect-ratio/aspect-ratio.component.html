@@ -7,14 +7,14 @@
   <div class="inner">
     <form class="crbInput">
       <div class="flex">
-        <label for="inputPreset">Common Ratios</label>
+        <label for="inputPresets">Common Ratios</label>
       </div>
       <select
-        id="inputPreset"
-        name="inputPreset"
-        #inputPreset
+        id="inputPresets"
+        name="inputPresets"
+        #inputPresets
         [(ngModel)]="ratioName"
-        (ngModelChange)="changeRatioHandler($event)"
+        (ngModelChange)="changeDropdownHandler($event)"
       >
         <option [value]="'default'" disabled>custom</option>
         @for (commonName of commonNames; track $index) {
@@ -26,43 +26,88 @@
     </form>
   </div>
 </div>
-<div class="card-wrapper">
-  <div class="card">
-    <div class="inner">
+<div class="card" id="mainCard" [attr.currentMode]="modeLink()">
+  <div class="inner">
+    <div class="flex">
       <form class="crbInput">
-        <label for="widthRatio">Width (ratio)</label>
+        <label for="ratioWidth">Width (ratio)</label>
         <input
-          #inputWidthRatio
+          #inputRatioWidth
           type="number"
-          id="widthRatio"
-          name="widthRatio"
+          id="ratioWidth"
+          name="ratioWidth"
           maxlength="10"
           placeholder="0"
           min="0"
           max="1000"
           placeholder="0"
           [(ngModel)]="ratioWidth"
-          (ngModelChange)="changeRatioHandler(inputWidthRatio.value, 'ratio', 'width')"
+          (ngModelChange)="changeRatioHandler('ratio', 'width')"
         />
       </form>
-    </div>
-  </div>
-  <div class="card">
-    <div class="inner">
+      <app-link-toggle ident="ratio/pixels" [current]="modeLink()" (click)="toggleMode()" />
+
       <form class="crbInput">
-        <label for="heightRatio">Height (ratio)</label>
+        <label for="ratioHeight">Height (ratio)</label>
         <input
-          #inputHeightRatio
+          #inputRatioHeight
           type="number"
-          id="heightRatio"
-          name="heightRatio"
+          id="ratioHeight"
+          name="ratioHeight"
           maxlength="10"
           placeholder="0"
           min="0"
           max="1000"
           placeholder="0"
           [(ngModel)]="ratioHeight"
-          (ngModelChange)="changeRatioHandler(inputHeightRatio.value, 'ratio', 'height')"
+          (ngModelChange)="changeRatioHandler('ratio', 'height')"
+        />
+      </form>
+    </div>
+    <div class="flex">
+      <app-link-toggle ident="width/height" [current]="modeLink()" (click)="toggleMode()" />
+      <crb-icon
+        id="swapValues"
+        image="swapHorizontal"
+        width="20"
+        height="20"
+        (click)="swapValues()"
+      />
+      <app-link-toggle ident="width/height" [current]="modeLink()" (click)="toggleMode()" />
+    </div>
+    <div class="flex">
+      <form class="crbInput">
+        <label for="pixelWidth">Width (pixels)</label>
+        <input
+          #inputPixelWidth
+          type="number"
+          id="pixelWidth"
+          name="pixelWidth"
+          maxlength="10"
+          placeholder="0"
+          min="0"
+          max="1000000"
+          placeholder="0"
+          [(ngModel)]="pixelWidth"
+          (ngModelChange)="changeRatioHandler('pixels', 'width')"
+        />
+      </form>
+      <app-link-toggle ident="ratio/pixels" [current]="modeLink()" (click)="toggleMode()" />
+
+      <form class="crbInput">
+        <label for="pixelHeight">Height (pixels)</label>
+        <input
+          #inputPixelHeight
+          type="number"
+          id="pixelHeight"
+          name="pixelHeight"
+          maxlength="10"
+          placeholder="0"
+          min="0"
+          max="1000000"
+          placeholder="0"
+          [(ngModel)]="pixelHeight"
+          (ngModelChange)="changeRatioHandler('pixels', 'height')"
         />
       </form>
     </div>
@@ -71,42 +116,24 @@
 <div class="card-wrapper">
   <div class="card">
     <div class="inner">
-      <form class="crbInput">
-        <label for="widthPixels">Width (pixels)</label>
-        <input
-          #inputWidthPixels
-          type="number"
-          id="widthPixels"
-          name="widthPixels"
-          maxlength="10"
-          placeholder="0"
-          min="0"
-          max="1000"
-          placeholder="0"
-          [(ngModel)]="pixelWidth"
-          (ngModelChange)="changeRatioHandler(inputWidthPixels.value, 'pixels', 'width')"
-        />
-      </form>
+      <div>Simplified</div>
+      <div id="simplified" class="ellipsis" title="{{ ratioSimplified() }}">
+        {{ ratioSimplified() }}
+      </div>
     </div>
   </div>
   <div class="card">
-    <div class="inner">
-      <form class="crbInput">
-        <label for="heightPixels">Height (pixels)</label>
-        <input
-          #inputHeightPixels
-          type="number"
-          id="heightPixels"
-          name="heightPixels"
-          maxlength="10"
-          placeholder="0"
-          min="0"
-          max="1000"
-          placeholder="0"
-          [(ngModel)]="pixelHeight"
-          (ngModelChange)="changeRatioHandler(inputHeightPixels.value, 'pixels', 'height')"
-        />
-      </form>
+    <div class="inner outputText">
+      <div>Decimal</div>
+      <div id="decimal" class="ellipsis" title="{{ ratioDecimal() }}">{{ ratioDecimal() }}</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="inner outputText">
+      <div>Percentage</div>
+      <div id="percentage" class="ellipsis" title="{{ ratioPercentage() }}">
+        {{ ratioPercentage() }}
+      </div>
     </div>
   </div>
 </div>
