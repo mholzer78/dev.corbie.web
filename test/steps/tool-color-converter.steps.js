@@ -7,7 +7,11 @@ Given('the user is using Color Connverter', async function () {
 });
 
 When('the user changes {string} to {string}', async function (key, input) {
-  await this.page.locator('#' + key).fill(input);
+  if (key === 'inputName') {
+    await this.page.locator('#' + key).selectOption(input);
+  } else {
+    await this.page.locator('#' + key).fill(input);
+  }
 });
 
 Then('the following values should be displayed:', async function (dataTable) {

@@ -7,10 +7,9 @@
     "start:www": "ng serve www.corbie.dev",
     "start:api": "ng serve api.corbie.dev",
     "build:apps": "ng build www.corbie.dev && ng build api.corbie.dev",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "test:e2e": "cucumber-js && node test/report.js",
-    "build:libs": "ng build @libs/icons && ng build @libs/header && ng build @libs/local-storage && ng build @libs/clipboard && ng build @libs/input-range && ng build @libs/nav && ng build @libs/http404"
+    "build:libs": "ng build @libs/icons && ng build @libs/header && ng build @libs/local-storage && ng build @libs/clipboard && ng build @libs/input-range && ng build @libs/nav && ng build @libs/http404",
+    "test:e2e": "cucumber-js",
+    "test:report": "node test/report.js"
   },
   "prettier": {
     "printWidth": 100,
