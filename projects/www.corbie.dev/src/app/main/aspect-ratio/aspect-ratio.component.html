@@ -45,7 +45,7 @@
           (ngModelChange)="changeRatioHandler('ratio', 'width')"
         />
       </form>
-      <app-link-toggle ident="ratio/pixels" [current]="modeLink()" (click)="toggleMode()" />
+      <app-link-toggle ident="ratio/pixels" [current]="modeLink()" (toggle)="toggleMode()" />
 
       <form class="crbInput">
         <label for="ratioHeight">Height (ratio)</label>
@@ -65,15 +65,16 @@
       </form>
     </div>
     <div class="flex">
-      <app-link-toggle ident="width/height" [current]="modeLink()" (click)="toggleMode()" />
+      <app-link-toggle ident="width/height" [current]="modeLink()" (toggle)="toggleMode()" />
       <crb-icon
         id="swapValues"
         image="swapHorizontal"
         width="20"
         height="20"
+        (keypress)="swapValues()"
         (click)="swapValues()"
       />
-      <app-link-toggle ident="width/height" [current]="modeLink()" (click)="toggleMode()" />
+      <app-link-toggle ident="width/height" [current]="modeLink()" (toggle)="toggleMode()" />
     </div>
     <div class="flex">
       <form class="crbInput">
@@ -92,7 +93,7 @@
           (ngModelChange)="changeRatioHandler('pixels', 'width')"
         />
       </form>
-      <app-link-toggle ident="ratio/pixels" [current]="modeLink()" (click)="toggleMode()" />
+      <app-link-toggle ident="ratio/pixels" [current]="modeLink()" (toggle)="toggleMode()" />
 
       <form class="crbInput">
         <label for="pixelHeight">Height (pixels)</label>

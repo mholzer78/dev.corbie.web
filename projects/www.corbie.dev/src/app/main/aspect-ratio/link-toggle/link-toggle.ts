@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Icons } from '@libs/icons';
 
 @Component({
@@ -12,6 +12,11 @@ import { Icons } from '@libs/icons';
   },
 })
 export class LinkToggle {
-  ident = input('ident');
-  current = input('value');
+  ident = input();
+  current = input();
+  toggle = output();
+
+  toggleLink() {
+    this.toggle.emit();
+  }
 }
