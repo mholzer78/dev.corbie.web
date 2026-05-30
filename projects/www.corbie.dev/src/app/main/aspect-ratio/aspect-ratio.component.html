@@ -26,6 +26,7 @@
     </form>
   </div>
 </div>
+
 <div class="card" id="mainCard" [attr.currentMode]="modeLink()">
   <div class="inner">
     <div class="flex">
@@ -76,14 +77,16 @@
         (keypress)="toggleMode()"
         (click)="toggleMode()"
       />
-      <crb-icon
-        id="swapValues"
-        image="swapHorizontal"
-        width="20"
-        height="20"
-        (keypress)="swapValues()"
-        (click)="swapValues()"
-      />
+      <div class="iconButton">
+        <crb-icon
+          id="swapValues"
+          image="swapHorizontal"
+          width="20"
+          height="20"
+          (keypress)="swapValues()"
+          (click)="swapValues()"
+        />
+      </div>
       <app-link-toggle
         ident="width/height"
         [current]="modeLink()"
