@@ -76,7 +76,6 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
   }
 
   updateValues(group: string, dimension: string): void {
-    this.store2storage();
     const ratioWidthNum = Number.parseFloat(this.ratioWidth());
     const ratioHeightNum = Number.parseFloat(this.ratioHeight());
     const pixelWidthNum = Number.parseFloat(this.pixelWidth());
@@ -106,6 +105,7 @@ export class AspectRatioComponent extends SiteBlueprint implements OnInit, OnDes
 
     this.checkRatioForDropdown();
     this.simplifyRatio();
+    this.store2storage();
   }
 
   checkRatioForDropdown(): void {
